@@ -63,13 +63,7 @@
     white-space: nowrap;
   }
   .logo span { color: var(--accent); }
-
-  /* Search */
-  .search-wrap {
-    flex: 1;
-    max-width: 340px;
-    position: relative;
-  }
+  .search-wrap { flex: 1; max-width: 340px; position: relative; }
   .search-wrap input {
     width: 100%;
     padding: 0.5rem 1rem 0.5rem 2.4rem;
@@ -84,278 +78,151 @@
   }
   .search-wrap input:focus { border-color: var(--accent); }
   .search-icon {
-    position: absolute;
-    left: 0.75rem;
-    top: 50%;
+    position: absolute; left: 0.75rem; top: 50%;
     transform: translateY(-50%);
-    color: var(--muted);
-    font-size: 1rem;
-    pointer-events: none;
+    color: var(--muted); font-size: 1rem; pointer-events: none;
   }
-
-  /* Cart button */
   .cart-btn {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: var(--accent);
-    color: #fff;
-    border: none;
-    border-radius: 24px;
-    padding: 0.5rem 1.1rem;
-    font-size: 0.875rem;
-    font-family: inherit;
-    font-weight: 600;
-    cursor: pointer;
-    white-space: nowrap;
+    display: flex; align-items: center; gap: 0.5rem;
+    background: var(--accent); color: #fff; border: none;
+    border-radius: 24px; padding: 0.5rem 1.1rem;
+    font-size: 0.875rem; font-family: inherit; font-weight: 600;
+    cursor: pointer; white-space: nowrap;
     transition: background 0.18s, transform 0.1s;
-    position: relative;
   }
   .cart-btn:hover { background: var(--accent-dark); }
   .cart-btn:active { transform: scale(0.97); }
   .cart-count {
-    background: #fff;
-    color: var(--accent);
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    display: none;
+    background: #fff; color: var(--accent); border-radius: 50%;
+    width: 20px; height: 20px; font-size: 0.75rem; font-weight: 700;
+    display: none; align-items: center; justify-content: center;
   }
   .cart-count.show { display: inline-flex; }
 
+  /* ── API KEY POPUP ── */
+  .apikey-overlay {
+    position: fixed; inset: 0;
+    background: rgba(26,23,20,0.65);
+    z-index: 900;
+    display: flex; align-items: center; justify-content: center;
+    padding: 1rem;
+  }
+  .apikey-modal {
+    background: var(--surface);
+    border-radius: 20px;
+    padding: 2.25rem 2rem 2rem;
+    max-width: 400px; width: 100%;
+    text-align: center;
+    box-shadow: var(--shadow-lg);
+    animation: popIn 0.28s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  @keyframes popIn {
+    from { transform: scale(0.88) translateY(16px); opacity: 0; }
+    to   { transform: scale(1)    translateY(0);    opacity: 1; }
+  }
+  .apikey-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+  .apikey-modal h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem; margin-bottom: 0.4rem;
+  }
+  .apikey-modal p { color: var(--muted); font-size: 0.875rem; line-height: 1.55; margin-bottom: 1.25rem; }
+  .apikey-input-wrap { position: relative; margin-bottom: 1rem; }
+  .apikey-input-wrap input {
+    width: 100%;
+    padding: 0.7rem 1rem;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem; font-family: inherit;
+    background: var(--bg); color: var(--text);
+    outline: none; transition: border-color 0.2s;
+    text-align: center; letter-spacing: 0.04em;
+  }
+  .apikey-input-wrap input:focus { border-color: var(--accent); }
+  .apikey-error {
+    font-size: 0.78rem; color: #e74c3c;
+    margin-top: -0.5rem; margin-bottom: 0.75rem;
+    min-height: 18px;
+  }
+  .apikey-submit {
+    width: 100%;
+    padding: 0.85rem;
+    background: var(--accent); color: #fff; border: none;
+    border-radius: var(--radius-sm);
+    font-family: inherit; font-weight: 700; font-size: 0.95rem;
+    cursor: pointer; transition: background 0.18s;
+  }
+  .apikey-submit:hover { background: var(--accent-dark); }
+  .apikey-submit:disabled { background: var(--border); color: var(--muted); cursor: not-allowed; }
 
-
-  /* ── HERO BANNER ── */
+  /* ── HERO ── */
   .hero {
     background: linear-gradient(135deg, #2d1f0e 0%, #5c3a1e 60%, #8b5a2b 100%);
-    padding: 2.5rem 1.5rem;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
+    padding: 2.5rem 1.5rem; text-align: center;
+    position: relative; overflow: hidden;
   }
   .hero::before {
-    content: '';
-    position: absolute; inset: 0;
+    content: ''; position: absolute; inset: 0;
     background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   }
   .hero h1 {
     font-family: 'Playfair Display', serif;
     font-size: clamp(1.6rem, 4vw, 2.4rem);
-    color: #fff;
-    margin-bottom: 0.5rem;
-    position: relative;
+    color: #fff; margin-bottom: 0.5rem; position: relative;
   }
-  .hero p {
-    color: rgba(255,255,255,0.7);
-    font-size: 0.95rem;
-    position: relative;
-  }
+  .hero p { color: rgba(255,255,255,0.7); font-size: 0.95rem; position: relative; }
 
-  /* ── CATEGORY TABS ── */
+  /* ── CATEGORIES ── */
   .category-wrap {
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
-    padding: 0 1.5rem;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
+    background: var(--surface); border-bottom: 1px solid var(--border);
+    padding: 0 1.5rem; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
   }
   .category-wrap::-webkit-scrollbar { display: none; }
   .category-list {
-    display: flex;
-    gap: 0.25rem;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0.75rem 0;
-    white-space: nowrap;
+    display: flex; gap: 0.25rem; max-width: 1100px; margin: 0 auto;
+    padding: 0.75rem 0; white-space: nowrap;
   }
   .cat-tab {
-    padding: 0.4rem 1rem;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 500;
-    cursor: pointer;
-    border: 1.5px solid transparent;
-    background: transparent;
-    color: var(--muted);
-    font-family: inherit;
-    transition: all 0.18s;
-    white-space: nowrap;
+    padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.85rem; font-weight: 500;
+    cursor: pointer; border: 1.5px solid transparent; background: transparent;
+    color: var(--muted); font-family: inherit; transition: all 0.18s; white-space: nowrap;
   }
   .cat-tab:hover { background: var(--surface2); color: var(--text); }
-  .cat-tab.active {
-    background: var(--accent-light);
-    color: var(--accent);
-    border-color: var(--accent);
-    font-weight: 600;
-  }
+  .cat-tab.active { background: var(--accent-light); color: var(--accent); border-color: var(--accent); font-weight: 600; }
 
-  /* ── MAIN LAYOUT ── */
+  /* ── MAIN ── */
   .main {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 1.5rem;
-    display: grid;
-    grid-template-columns: 1fr 340px;
-    gap: 1.5rem;
-    align-items: start;
+    max-width: 1100px; margin: 0 auto; padding: 1.5rem;
+    display: grid; grid-template-columns: 1fr 340px; gap: 1.5rem; align-items: start;
   }
-  @media (max-width: 860px) {
-    .main { grid-template-columns: 1fr; }
-    .cart-sidebar { display: none; }
-  }
+  @media (max-width: 860px) { .main { grid-template-columns: 1fr; } .cart-sidebar { display: none; } }
 
-  /* ── PRODUCT GRID ── */
-  .section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
-    color: var(--text);
-  }
-  .product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1rem;
-  }
-  @media (max-width: 480px) {
-    .product-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
-  }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 1.3rem; margin-bottom: 1rem; color: var(--text); }
+  .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
+  @media (max-width: 480px) { .product-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; } }
 
   .product-card {
-    background: var(--surface);
-    border-radius: var(--radius);
-    overflow: hidden;
-    border: 1px solid var(--border);
-    transition: box-shadow 0.2s, transform 0.15s;
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
+    background: var(--surface); border-radius: var(--radius); overflow: hidden;
+    border: 1px solid var(--border); transition: box-shadow 0.2s, transform 0.15s;
+    display: flex; flex-direction: column; cursor: pointer;
   }
-  .product-card:hover {
-    box-shadow: var(--shadow-lg);
-    transform: translateY(-2px);
-  }
-  .product-img {
-    width: 100%;
-    aspect-ratio: 4/3;
-    object-fit: cover;
-    background: var(--surface2);
-    display: block;
-  }
-  .product-img-placeholder {
-    width: 100%;
-    aspect-ratio: 4/3;
-    background: var(--surface2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2.5rem;
-  }
-  .product-body {
-    padding: 0.875rem;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    gap: 0.4rem;
-  }
-  .product-name {
-    font-weight: 600;
-    font-size: 0.9rem;
-    line-height: 1.35;
-    color: var(--text);
-  }
-  .product-desc {
-    font-size: 0.78rem;
-    color: var(--muted);
-    line-height: 1.45;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-  .product-cat-tag {
-    font-size: 0.7rem;
-    background: var(--tag-bg);
-    color: var(--muted);
-    padding: 2px 8px;
-    border-radius: 10px;
-    display: inline-block;
-    width: fit-content;
-    font-weight: 500;
-  }
-  .product-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: auto;
-    padding-top: 0.5rem;
-  }
-  .product-price {
-    font-weight: 700;
-    font-size: 1rem;
-    color: var(--accent);
-    font-family: 'DM Sans', sans-serif;
-  }
-  .add-btn {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: var(--accent);
-    color: #fff;
-    border: none;
-    font-size: 1.2rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.18s, transform 0.1s;
-    flex-shrink: 0;
-  }
+  .product-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+  .product-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; background: var(--surface2); display: block; }
+  .product-img-placeholder { width: 100%; aspect-ratio: 4/3; background: var(--surface2); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; }
+  .product-body { padding: 0.875rem; display: flex; flex-direction: column; flex: 1; gap: 0.4rem; }
+  .product-name { font-weight: 600; font-size: 0.9rem; line-height: 1.35; color: var(--text); }
+  .product-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.45; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .product-cat-tag { font-size: 0.7rem; background: var(--tag-bg); color: var(--muted); padding: 2px 8px; border-radius: 10px; display: inline-block; width: fit-content; font-weight: 500; }
+  .product-footer { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 0.5rem; }
+  .product-price { font-weight: 700; font-size: 1rem; color: var(--accent); }
+  .add-btn { width: 32px; height: 32px; border-radius: 50%; background: var(--accent); color: #fff; border: none; font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.18s, transform 0.1s; flex-shrink: 0; }
   .add-btn:hover { background: var(--accent-dark); }
   .add-btn:active { transform: scale(0.9); }
-  .in-cart-indicator {
-    display: none;
-    align-items: center;
-    gap: 4px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--green);
-  }
-  .in-cart-indicator.show { display: flex; }
-
-  /* qty stepper on card */
-  .qty-stepper {
-    display: none;
-    align-items: center;
-    gap: 4px;
-  }
+  .qty-stepper { display: none; align-items: center; gap: 4px; }
   .qty-stepper.show { display: flex; }
-  .qty-btn {
-    width: 28px; height: 28px;
-    border-radius: 50%;
-    border: 1.5px solid var(--border);
-    background: var(--surface);
-    color: var(--text);
-    font-size: 1rem;
-    cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    font-weight: 600;
-    transition: border-color 0.15s;
-  }
+  .qty-btn { width: 28px; height: 28px; border-radius: 50%; border: 1.5px solid var(--border); background: var(--surface); color: var(--text); font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; font-weight: 600; transition: border-color 0.15s; }
   .qty-btn:hover { border-color: var(--accent); color: var(--accent); }
-  .qty-val {
-    min-width: 20px;
-    text-align: center;
-    font-weight: 700;
-    font-size: 0.9rem;
-  }
+  .qty-val { min-width: 20px; text-align: center; font-weight: 700; font-size: 0.9rem; }
 
-  /* ── SKELETON ── */
   .skeleton { animation: pulse 1.5s ease-in-out infinite; }
   @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
   .skel-card { background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border); overflow: hidden; }
@@ -363,324 +230,156 @@
   .skel-body { padding: 0.875rem; display: flex; flex-direction: column; gap: 0.5rem; }
   .skel-line { background: var(--surface2); border-radius: 4px; height: 12px; }
 
-  /* ── EMPTY / ERROR ── */
-  .empty-state {
-    text-align: center;
-    padding: 3rem 1rem;
-    color: var(--muted);
-    grid-column: 1/-1;
-  }
+  .empty-state { text-align: center; padding: 3rem 1rem; color: var(--muted); grid-column: 1/-1; }
   .empty-state .big-icon { font-size: 3rem; margin-bottom: 1rem; }
   .empty-state h3 { font-size: 1.1rem; margin-bottom: 0.4rem; color: var(--text); }
 
   /* ── CART SIDEBAR ── */
-  .cart-sidebar {
-    background: var(--surface);
-    border-radius: var(--radius);
-    border: 1px solid var(--border);
-    padding: 1.25rem;
-    position: sticky;
-    top: 80px;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    max-height: calc(100vh - 100px);
-    overflow-y: auto;
-  }
-  .cart-sidebar h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  .cart-empty-msg {
-    color: var(--muted);
-    font-size: 0.85rem;
-    text-align: center;
-    padding: 1rem 0;
-  }
+  .cart-sidebar { background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border); padding: 1.25rem; position: sticky; top: 80px; display: flex; flex-direction: column; gap: 1rem; max-height: calc(100vh - 100px); overflow-y: auto; }
+  .cart-sidebar h2 { font-family: 'Playfair Display', serif; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem; }
+  .cart-empty-msg { color: var(--muted); font-size: 0.85rem; text-align: center; padding: 1rem 0; }
   .cart-items { display: flex; flex-direction: column; gap: 0.75rem; }
-  .cart-item {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding-bottom: 0.75rem;
-    border-bottom: 1px solid var(--border);
-  }
+  .cart-item { display: flex; align-items: center; gap: 0.75rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border); }
   .cart-item:last-child { border-bottom: none; padding-bottom: 0; }
   .ci-info { flex: 1; min-width: 0; }
   .ci-name { font-weight: 600; font-size: 0.85rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .ci-price { font-size: 0.8rem; color: var(--muted); }
   .ci-stepper { display: flex; align-items: center; gap: 4px; }
-  .ci-btn {
-    width: 24px; height: 24px;
-    border-radius: 50%;
-    border: 1.5px solid var(--border);
-    background: transparent;
-    color: var(--text);
-    font-size: 0.85rem;
-    cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    font-weight: 700;
-    transition: border-color 0.15s;
-  }
+  .ci-btn { width: 24px; height: 24px; border-radius: 50%; border: 1.5px solid var(--border); background: transparent; color: var(--text); font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; justify-content: center; font-weight: 700; transition: border-color 0.15s; }
   .ci-btn:hover { border-color: var(--accent); color: var(--accent); }
   .ci-qty { min-width: 18px; text-align: center; font-weight: 700; font-size: 0.85rem; }
 
-  .cart-note textarea {
-    width: 100%;
-    border: 1.5px solid var(--border);
-    border-radius: var(--radius-sm);
-    padding: 0.6rem 0.75rem;
-    font-family: inherit;
-    font-size: 0.85rem;
-    resize: vertical;
-    min-height: 72px;
-    color: var(--text);
-    background: var(--bg);
-    outline: none;
-    transition: border-color 0.2s;
-  }
+  .cart-note textarea { width: 100%; border: 1.5px solid var(--border); border-radius: var(--radius-sm); padding: 0.6rem 0.75rem; font-family: inherit; font-size: 0.85rem; resize: vertical; min-height: 72px; color: var(--text); background: var(--bg); outline: none; transition: border-color 0.2s; }
   .cart-note textarea:focus { border-color: var(--accent); }
-  .cart-note label {
-    font-size: 0.78rem;
-    font-weight: 600;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    display: block;
-    margin-bottom: 0.4rem;
-  }
-
-  .cart-total {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.75rem 0;
-    border-top: 1.5px solid var(--border);
-  }
+  .cart-note label { font-size: 0.78rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 0.4rem; }
+  .cart-total { display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0; border-top: 1.5px solid var(--border); }
   .cart-total span { font-size: 0.85rem; color: var(--muted); }
   .cart-total strong { font-size: 1.05rem; color: var(--text); }
 
-  .order-btn {
-    width: 100%;
-    padding: 0.85rem;
-    background: var(--accent);
-    color: #fff;
-    border: none;
-    border-radius: var(--radius-sm);
-    font-family: inherit;
-    font-weight: 700;
-    font-size: 0.95rem;
-    cursor: pointer;
-    transition: background 0.18s, transform 0.1s;
-    letter-spacing: 0.02em;
-  }
+  .order-btn { width: 100%; padding: 0.85rem; background: var(--accent); color: #fff; border: none; border-radius: var(--radius-sm); font-family: inherit; font-weight: 700; font-size: 0.95rem; cursor: pointer; transition: background 0.18s, transform 0.1s; letter-spacing: 0.02em; }
   .order-btn:hover { background: var(--accent-dark); }
   .order-btn:active { transform: scale(0.98); }
   .order-btn:disabled { background: var(--border); color: var(--muted); cursor: not-allowed; transform: none; }
 
-  /* ── MOBILE CART SHEET ── */
-  .mobile-cart-fab {
-    display: none;
-    position: fixed;
-    bottom: 1.25rem;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--accent);
-    color: #fff;
-    border: none;
-    border-radius: 28px;
-    padding: 0.85rem 1.75rem;
-    font-family: inherit;
-    font-weight: 700;
-    font-size: 0.95rem;
-    cursor: pointer;
-    box-shadow: 0 4px 20px rgba(200,91,30,0.4);
-    z-index: 200;
-    white-space: nowrap;
-    gap: 0.6rem;
-    align-items: center;
-    transition: background 0.18s;
-    min-width: 220px;
-    justify-content: center;
-  }
+  /* ── MOBILE CART FAB ── */
+  .mobile-cart-fab { display: none; position: fixed; bottom: 1.25rem; left: 50%; transform: translateX(-50%); background: var(--accent); color: #fff; border: none; border-radius: 28px; padding: 0.85rem 1.75rem; font-family: inherit; font-weight: 700; font-size: 0.95rem; cursor: pointer; box-shadow: 0 4px 20px rgba(200,91,30,0.4); z-index: 200; white-space: nowrap; gap: 0.6rem; align-items: center; transition: background 0.18s; min-width: 220px; justify-content: center; }
   .mobile-cart-fab:hover { background: var(--accent-dark); }
-  @media (max-width: 860px) {
-    .mobile-cart-fab { display: flex; }
-  }
+  @media (max-width: 860px) { .mobile-cart-fab { display: flex; } }
 
-  /* Bottom sheet */
-  .sheet-overlay {
-    position: fixed; inset: 0;
-    background: rgba(0,0,0,0.45);
-    z-index: 300;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.25s;
-  }
+  .sheet-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 300; opacity: 0; pointer-events: none; transition: opacity 0.25s; }
   .sheet-overlay.open { opacity: 1; pointer-events: all; }
-  .sheet {
-    position: fixed;
-    bottom: 0; left: 0; right: 0;
-    background: var(--surface);
-    border-radius: 20px 20px 0 0;
-    padding: 1.25rem 1.25rem 2rem;
-    z-index: 301;
-    max-height: 85vh;
-    overflow-y: auto;
-    transform: translateY(100%);
-    transition: transform 0.28s cubic-bezier(0.32,0,0.67,0);
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
+  .sheet { position: fixed; bottom: 0; left: 0; right: 0; background: var(--surface); border-radius: 20px 20px 0 0; padding: 1.25rem 1.25rem 2rem; z-index: 301; max-height: 85vh; overflow-y: auto; transform: translateY(100%); transition: transform 0.28s cubic-bezier(0.32,0,0.67,0); display: flex; flex-direction: column; gap: 1rem; }
   .sheet.open { transform: translateY(0); }
-  .sheet-handle {
-    width: 40px; height: 4px;
-    background: var(--border);
-    border-radius: 2px;
-    margin: 0 auto 0.25rem;
-  }
-  .sheet h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.15rem;
-  }
+  .sheet-handle { width: 40px; height: 4px; background: var(--border); border-radius: 2px; margin: 0 auto 0.25rem; }
+  .sheet h2 { font-family: 'Playfair Display', serif; font-size: 1.15rem; }
 
-  /* ── SUCCESS MODAL ── */
-  .modal-overlay {
-    position: fixed; inset: 0;
-    background: rgba(0,0,0,0.5);
-    z-index: 500;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.2s;
-  }
+  .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 500; display: flex; align-items: center; justify-content: center; padding: 1rem; opacity: 0; pointer-events: none; transition: opacity 0.2s; }
   .modal-overlay.open { opacity: 1; pointer-events: all; }
-  .modal {
-    background: var(--surface);
-    border-radius: 20px;
-    padding: 2.5rem 2rem 2rem;
-    max-width: 380px;
-    width: 100%;
-    text-align: center;
-    transform: scale(0.88) translateY(16px);
-    transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1);
-  }
+  .modal { background: var(--surface); border-radius: 20px; padding: 2.5rem 2rem 2rem; max-width: 380px; width: 100%; text-align: center; transform: scale(0.88) translateY(16px); transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1); }
   .modal-overlay.open .modal { transform: scale(1) translateY(0); }
-  .modal-icon {
-    width: 72px; height: 72px;
-    background: var(--green-light);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 1.25rem;
-    font-size: 2rem;
-  }
-  .modal h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.4rem;
-    margin-bottom: 0.5rem;
-  }
+  .modal-icon { width: 72px; height: 72px; background: var(--green-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; font-size: 2rem; }
+  .modal h2 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 0.5rem; }
   .modal p { color: var(--muted); font-size: 0.9rem; line-height: 1.55; margin-bottom: 1.5rem; }
-  .modal-order-id {
-    background: var(--surface2);
-    border-radius: var(--radius-sm);
-    padding: 0.6rem 1rem;
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--text);
-    margin-bottom: 1.5rem;
-    letter-spacing: 0.04em;
-  }
-  .modal-close-btn {
-    width: 100%;
-    padding: 0.85rem;
-    background: var(--accent);
-    color: #fff;
-    border: none;
-    border-radius: var(--radius-sm);
-    font-family: inherit;
-    font-weight: 700;
-    font-size: 0.95rem;
-    cursor: pointer;
-    transition: background 0.18s;
-  }
+  .modal-order-id { background: var(--surface2); border-radius: var(--radius-sm); padding: 0.6rem 1rem; font-size: 0.85rem; font-weight: 600; color: var(--text); margin-bottom: 1.5rem; letter-spacing: 0.04em; }
+  .modal-close-btn { width: 100%; padding: 0.85rem; background: var(--accent); color: #fff; border: none; border-radius: var(--radius-sm); font-family: inherit; font-weight: 700; font-size: 0.95rem; cursor: pointer; transition: background 0.18s; }
   .modal-close-btn:hover { background: var(--accent-dark); }
 
-  /* ── TOAST ── */
-  .toast {
-    position: fixed;
-    bottom: 6rem;
-    left: 50%;
-    transform: translateX(-50%) translateY(0);
-    background: #1a1714;
-    color: #fff;
-    padding: 0.6rem 1.25rem;
-    border-radius: 24px;
-    font-size: 0.85rem;
-    font-weight: 500;
-    z-index: 400;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.2s, transform 0.2s;
-    white-space: nowrap;
-  }
+  .toast { position: fixed; bottom: 6rem; left: 50%; transform: translateX(-50%) translateY(0); background: #1a1714; color: #fff; padding: 0.6rem 1.25rem; border-radius: 24px; font-size: 0.85rem; font-weight: 500; z-index: 400; opacity: 0; pointer-events: none; transition: opacity 0.2s, transform 0.2s; white-space: nowrap; }
   .toast.show { opacity: 1; }
 
-  /* ── CUSTOMER FORM ── */
   .customer-form { display: flex; flex-direction: column; gap: 0.75rem; }
   .form-row { display: flex; gap: 0.6rem; }
   .form-row .form-group { flex: 1; }
   .form-group { display: flex; flex-direction: column; gap: 0.35rem; }
-  .form-group label {
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-  .form-group input {
-    padding: 0.55rem 0.75rem;
-    border: 1.5px solid var(--border);
-    border-radius: var(--radius-sm);
-    font-size: 0.875rem;
-    font-family: inherit;
-    background: var(--bg);
-    color: var(--text);
-    outline: none;
-    transition: border-color 0.2s;
-    width: 100%;
-  }
+  .form-group label { font-size: 0.75rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+  .form-group input { padding: 0.55rem 0.75rem; border: 1.5px solid var(--border); border-radius: var(--radius-sm); font-size: 0.875rem; font-family: inherit; background: var(--bg); color: var(--text); outline: none; transition: border-color 0.2s; width: 100%; }
   .form-group input:focus { border-color: var(--accent); }
-
-  /* required star */
   .req { color: var(--accent); }
-
-  /* ── LOADING STATE ── */
-  .spinner {
-    width: 40px; height: 40px;
-    border: 3px solid var(--border);
-    border-top-color: var(--accent);
-    border-radius: 50%;
-    animation: spin 0.7s linear infinite;
-    margin: 2rem auto;
-  }
+  .spinner { width: 40px; height: 40px; border: 3px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.7s linear infinite; margin: 2rem auto; }
   @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ── FOOTER ── */
+  .site-footer {
+    background: #1a1714;
+    color: rgba(255,255,255,0.65);
+    padding: 2.5rem 1.5rem 2rem;
+    margin-top: 3rem;
+  }
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 2rem;
+  }
+  @media (max-width: 640px) {
+    .footer-inner { grid-template-columns: 1fr; gap: 1.5rem; }
+  }
+  .footer-brand .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    color: #fff;
+    margin-bottom: 0.6rem;
+  }
+  .footer-brand .footer-logo span { color: var(--accent); }
+  .footer-brand p { font-size: 0.83rem; line-height: 1.65; }
+  .footer-col h4 {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 0.75rem;
+  }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+  .footer-col ul li { font-size: 0.83rem; }
+  .footer-col ul li a { color: rgba(255,255,255,0.65); text-decoration: none; transition: color 0.15s; }
+  .footer-col ul li a:hover { color: #fff; }
+  .footer-col .footer-contact-item {
+    display: flex; align-items: flex-start; gap: 0.5rem;
+    font-size: 0.83rem; margin-bottom: 0.4rem;
+  }
+  .footer-contact-item .fc-icon { flex-shrink: 0; margin-top: 1px; }
+  .footer-bottom {
+    max-width: 1100px; margin: 1.75rem auto 0;
+    padding-top: 1.25rem; border-top: 1px solid rgba(255,255,255,0.08);
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 0.75rem;
+    font-size: 0.78rem; color: rgba(255,255,255,0.3);
+  }
+  .footer-bottom a { color: rgba(255,255,255,0.45); text-decoration: none; }
+  .footer-bottom a:hover { color: rgba(255,255,255,0.75); }
+  .footer-powered {
+    display: flex; align-items: center; gap: 0.35rem;
+    font-size: 0.75rem; color: rgba(255,255,255,0.25);
+  }
+  .footer-powered span { color: var(--accent); }
 </style>
 </head>
 <body>
 
-
+<!-- ── API KEY POPUP ── -->
+<div class="apikey-overlay" id="apikeyOverlay" style="display:none">
+  <div class="apikey-modal">
+    <div class="apikey-icon">🔑</div>
+    <h2>Nhập mã cửa hàng</h2>
+    <p>Vui lòng nhập API Key của cửa hàng để xem thực đơn và đặt món.</p>
+    <div class="apikey-input-wrap">
+      <input type="text" id="apikeyInput"
+        placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+        autocomplete="off" spellcheck="false">
+    </div>
+    <div class="apikey-error" id="apikeyError"></div>
+    <button class="apikey-submit" id="apikeySubmit" onclick="submitApiKey()">
+      Xem thực đơn →
+    </button>
+  </div>
+</div>
 
 <!-- ── HEADER ── -->
 <header class="header">
   <div class="header-inner">
-    <a class="logo" href="#">Nhà Hàng <span>●</span> Order</a>
+    <a class="logo" href="#" id="headerLogo">Order Menu</a>
     <div class="search-wrap">
       <span class="search-icon">🔍</span>
       <input type="search" id="searchInput" placeholder="Tìm món ăn...">
@@ -708,7 +407,6 @@
   <div>
     <h2 class="section-title" id="sectionTitle">Đang tải menu...</h2>
     <div class="product-grid" id="productGrid">
-      <!-- skeleton -->
       <div class="skel-card skeleton"><div class="skel-img"></div><div class="skel-body"><div class="skel-line" style="width:70%"></div><div class="skel-line" style="width:90%"></div><div class="skel-line" style="width:50%"></div></div></div>
       <div class="skel-card skeleton"><div class="skel-img"></div><div class="skel-body"><div class="skel-line" style="width:80%"></div><div class="skel-line" style="width:60%"></div><div class="skel-line" style="width:40%"></div></div></div>
       <div class="skel-card skeleton"><div class="skel-img"></div><div class="skel-body"><div class="skel-line" style="width:65%"></div><div class="skel-line" style="width:85%"></div><div class="skel-line" style="width:55%"></div></div></div>
@@ -716,17 +414,14 @@
     </div>
   </div>
 
-  <!-- Sidebar cart (desktop) -->
   <aside class="cart-sidebar" id="cartSidebar">
     <h2>🛒 Giỏ hàng</h2>
     <p class="cart-empty-msg" id="cartEmptyMsg">Chưa có món nào. Hãy thêm vào giỏ!</p>
     <div class="cart-items" id="cartItemsDesktop"></div>
-
     <div class="cart-note">
       <label>Ghi chú đơn hàng</label>
       <textarea id="orderNoteDesktop" placeholder="Ví dụ: ít cay, không hành, thêm đá..."></textarea>
     </div>
-
     <div class="customer-form" id="customerFormDesktop">
       <div class="form-row">
         <div class="form-group">
@@ -743,15 +438,11 @@
         <input type="email" id="custEmailD" placeholder="email@example.com">
       </div>
     </div>
-
     <div class="cart-total" id="cartTotalDesktop" style="display:none">
       <span>Tổng cộng</span>
       <strong id="totalPriceDesktop">0 ₫</strong>
     </div>
-
-    <button class="order-btn" id="orderBtnDesktop" onclick="placeOrder('desktop')" disabled>
-      Đặt hàng ngay
-    </button>
+    <button class="order-btn" id="orderBtnDesktop" onclick="placeOrder('desktop')" disabled>Đặt hàng ngay</button>
   </aside>
 </div>
 
@@ -767,12 +458,10 @@
   <h2>🛒 Giỏ hàng</h2>
   <p class="cart-empty-msg" id="cartEmptyMsgSheet" style="display:none">Chưa có món nào.</p>
   <div class="cart-items" id="cartItemsMobile"></div>
-
   <div class="cart-note">
     <label>Ghi chú đơn hàng</label>
     <textarea id="orderNoteMobile" placeholder="Ví dụ: ít cay, không hành, thêm đá..."></textarea>
   </div>
-
   <div class="customer-form">
     <div class="form-row">
       <div class="form-group">
@@ -789,15 +478,11 @@
       <input type="email" id="custEmailM" placeholder="email@example.com">
     </div>
   </div>
-
   <div class="cart-total" id="cartTotalMobile" style="display:none">
     <span>Tổng cộng</span>
     <strong id="totalPriceMobile">0 ₫</strong>
   </div>
-
-  <button class="order-btn" id="orderBtnMobile" onclick="placeOrder('mobile')" disabled>
-    Đặt hàng ngay
-  </button>
+  <button class="order-btn" id="orderBtnMobile" onclick="placeOrder('mobile')" disabled>Đặt hàng ngay</button>
 </div>
 
 <!-- ── SUCCESS MODAL ── -->
@@ -814,55 +499,154 @@
 <!-- ── TOAST ── -->
 <div class="toast" id="toast"></div>
 
-<!-- ── SHOP API ── -->
+<!-- ── FOOTER ── -->
+<footer class="site-footer" id="siteFooter">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo" id="footerShopName">Nhà Hàng <span>●</span> Order</div>
+      <p id="footerShopDesc">Thực đơn đa dạng, hương vị đậm đà — đặt món dễ dàng ngay tại đây.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Giờ mở cửa</h4>
+      <ul>
+        <li>Thứ 2 – Thứ 6</li>
+        <li>07:00 – 22:00</li>
+        <li>Thứ 7 – Chủ nhật</li>
+        <li>08:00 – 23:00</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Liên hệ</h4>
+      <div class="footer-contact-item">
+        <span class="fc-icon">📍</span>
+        <span id="footerAddress">123 Đường Ẩm Thực, Quận 1</span>
+      </div>
+      <div class="footer-contact-item">
+        <span class="fc-icon">📞</span>
+        <span id="footerPhone">0901 234 567</span>
+      </div>
+      <div class="footer-contact-item">
+        <span class="fc-icon">✉️</span>
+        <span id="footerEmail">hello@nhahangyou.com</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© <span id="footerYear"></span> <span id="footerCopyName">Nhà Hàng</span>. All rights reserved.</span>
+    <div class="footer-powered">Powered by <span>●</span> OrderSystem</div>
+  </div>
+</footer>
+
 <script>
-// ── Inline ShopAPI (from shop-api.js) ──────────────────────────────────────
+// ── Constants ─────────────────────────────────────────────────────────────
+const WORKER_URL    = "https://quanlykho-api.nguyenxuancuongk56.workers.dev";
+const LS_API_KEY    = "ordering_menu_api_key";
+const LS_COOLDOWN   = "ordering_menu_last_order_ts";
+const COOLDOWN_MS   = 30_000;
+
+// ── API Key resolution ─────────────────────────────────────────────────────
+function resolveApiKey() {
+  // 1. URL param ?api_key=...
+  const urlKey = new URLSearchParams(window.location.search).get('api_key');
+  if (urlKey && urlKey.trim()) {
+    localStorage.setItem(LS_API_KEY, urlKey.trim());
+    // Clean URL without reload
+    const url = new URL(window.location.href);
+    url.searchParams.delete('api_key');
+    window.history.replaceState({}, '', url.toString());
+    return urlKey.trim();
+  }
+  // 2. localStorage
+  const stored = localStorage.getItem(LS_API_KEY);
+  if (stored && stored.trim()) return stored.trim();
+  // 3. None → show popup
+  return null;
+}
+
+function showApiKeyPopup() {
+  document.getElementById('apikeyOverlay').style.display = 'flex';
+  setTimeout(() => document.getElementById('apikeyInput').focus(), 100);
+}
+
+function hideApiKeyPopup() {
+  document.getElementById('apikeyOverlay').style.display = 'none';
+}
+
+async function submitApiKey() {
+  const val = document.getElementById('apikeyInput').value.trim();
+  const errEl = document.getElementById('apikeyError');
+  const btn   = document.getElementById('apikeySubmit');
+  errEl.textContent = '';
+
+  if (!val) { errEl.textContent = 'Vui lòng nhập API Key'; return; }
+  // Basic UUID format check
+  if (!/^[0-9a-f-]{30,}$/i.test(val)) {
+    errEl.textContent = 'API Key không đúng định dạng';
+    return;
+  }
+
+  btn.disabled = true; btn.textContent = 'Đang kiểm tra...';
+
+  // Validate by calling /products — nếu 401/403 thì key sai
+  try {
+    const r = await fetch(`${WORKER_URL}/products?api_key=${encodeURIComponent(val)}&limit=1`);
+    if (r.status === 401 || r.status === 403) {
+      errEl.textContent = 'API Key không hợp lệ. Vui lòng kiểm tra lại.';
+      btn.disabled = false; btn.textContent = 'Xem thực đơn →';
+      return;
+    }
+    // Key OK
+    localStorage.setItem(LS_API_KEY, val);
+    hideApiKeyPopup();
+    startApp(val);
+  } catch (e) {
+    errEl.textContent = 'Không thể kết nối. Kiểm tra lại mạng.';
+    btn.disabled = false; btn.textContent = 'Xem thực đơn →';
+  }
+}
+
+// Enter key submit
+document.getElementById('apikeyInput').addEventListener('keydown', e => {
+  if (e.key === 'Enter') submitApiKey();
+});
+
+// ── ShopAPI ────────────────────────────────────────────────────────────────
 class ShopAPI {
   constructor(config) {
-    this.workerUrl = config.workerUrl;
+    this.workerUrl   = config.workerUrl;
     this.publicApiKey = config.publicApiKey || null;
-    this.cache = new Map();
-    this.cacheTTL = 5 * 60 * 1000;
+    this.cache       = new Map();
+    this.cacheTTL    = 5 * 60 * 1000;
   }
   async loadProducts(options = {}) {
-    const { page = 1, limit = 100, category = null, search = null, inStockOnly = true } = options;
-    const cacheKey = `products_${page}_${limit}_${category}_${search}`;
+    const { page = 1, limit = 100, inStockOnly = true } = options;
+    const cacheKey = `products_${page}_${limit}`;
     const cached = this.getCache(cacheKey);
     if (cached) return cached;
-    try {
-      const url = new URL(`${this.workerUrl}/products`);
-      url.searchParams.set('api_key', this.publicApiKey || 'public');
-      url.searchParams.set('page', page);
-      url.searchParams.set('limit', limit);
-      const response = await fetch(url.toString());
-      const result = await response.json();
-      if (!result.success) throw new Error(result.error || 'Failed to load products');
-      let products = result.data.items || result.data || [];
-      if (inStockOnly) products = products.filter(p => Number(p.amount_in_stock || 0) > 0);
-      if (category) products = products.filter(p => (p.category || '').toLowerCase() === category.toLowerCase());
-      if (search) {
-        const q = search.toLowerCase();
-        products = products.filter(p => {
-          const t = (p.title || p.name || '').toLowerCase();
-          const d = (p.description || '').toLowerCase();
-          return t.includes(q) || d.includes(q);
-        });
-      }
-      this.setCache(cacheKey, products);
-      return products;
-    } catch (e) { throw e; }
+    const url = new URL(`${this.workerUrl}/products`);
+    url.searchParams.set('api_key', this.publicApiKey);
+    url.searchParams.set('page', page);
+    url.searchParams.set('limit', limit);
+    const r = await fetch(url.toString());
+    const result = await r.json();
+    if (!result.success) throw new Error(result.error || 'Failed to load products');
+    let products = result.data?.items || result.data || [];
+    if (inStockOnly) products = products.filter(p => Number(p.amount_in_stock || 0) > 0);
+    this.setCache(cacheKey, products);
+    return products;
   }
   async loadSettings() {
     const cached = this.getCache('settings');
     if (cached) return cached;
     try {
       const url = new URL(`${this.workerUrl}/settings`);
-      url.searchParams.set('api_key', this.publicApiKey || 'public');
+      url.searchParams.set('api_key', this.publicApiKey);
       const r = await fetch(url.toString());
       const result = await r.json();
-      if (!result.success) throw new Error(result.error || 'Failed to load settings');
-      this.setCache('settings', result.data);
-      return result.data;
+      if (!result.success) return {};
+      const data = result.data || {};
+      this.setCache('settings', data);
+      return data;
     } catch (e) { return {}; }
   }
   async loadCategories() {
@@ -870,35 +654,34 @@ class ShopAPI {
     if (cached) return cached;
     try {
       const url = new URL(`${this.workerUrl}/categories`);
-      url.searchParams.set('api_key', this.publicApiKey || 'public');
+      url.searchParams.set('api_key', this.publicApiKey);
       const r = await fetch(url.toString());
       const result = await r.json();
-      if (!result.success) return this.loadCategoriesFromProducts();
-      let cats = Array.isArray(result.data) ? result.data : (result.data?.items || []);
+      if (!result.success) return this._catsFromProducts();
+      const cats = Array.isArray(result.data) ? result.data : (result.data?.items || []);
       this.setCache('categories', cats);
       return cats;
-    } catch (e) { return this.loadCategoriesFromProducts(); }
+    } catch (e) { return this._catsFromProducts(); }
   }
-  async loadCategoriesFromProducts() {
+  async _catsFromProducts() {
     try {
       const products = await this.loadProducts({ limit: 1000 });
-      const set = new Set();
+      const seen = new Map();
       products.forEach(p => {
         let c = p.category || p.category_name;
         if (c && typeof c === 'object') c = c.name || c.id || '';
-        if (c && String(c).trim()) set.add(String(c).trim());
+        if (c && String(c).trim()) seen.set(String(c).trim(), String(c).trim());
       });
-      const cats = Array.from(set).sort();
+      const cats = [...seen.values()].sort();
       this.setCache('categories', cats);
       return cats;
-    } catch(e) { return []; }
+    } catch (e) { return []; }
   }
   async createCustomer(d) {
     const url = new URL(`${this.workerUrl}/customers`);
-    url.searchParams.set('api_key', this.publicApiKey || 'public');
+    url.searchParams.set('api_key', this.publicApiKey);
     const r = await fetch(url.toString(), {
-      method: 'POST',
-      headers: {'Content-Type':'application/json'},
+      method: 'POST', headers: {'Content-Type':'application/json'},
       body: JSON.stringify({ name: d.name, phone: d.phone, email: d.email || '' })
     });
     const result = await r.json();
@@ -907,30 +690,21 @@ class ShopAPI {
   }
   async createOrder(d) {
     const url = new URL(`${this.workerUrl}/orders`);
-    url.searchParams.set('api_key', this.publicApiKey || 'public');
+    url.searchParams.set('api_key', this.publicApiKey);
     const r = await fetch(url.toString(), {
-      method: 'POST',
-      headers: {'Content-Type':'application/json'},
+      method: 'POST', headers: {'Content-Type':'application/json'},
       body: JSON.stringify({
-        customer_id: d.customer_id,
-        items: d.items,
+        customer_id: d.customer_id, items: d.items,
         created_at: d.created_at || new Date().toISOString(),
-        note: d.note,
-        customer_name: d.customer_name,
-        customer_phone: d.customer_phone,
-        customer_email: d.customer_email
+        note: d.note, customer_name: d.customer_name,
+        customer_phone: d.customer_phone, customer_email: d.customer_email
       })
     });
     const result = await r.json();
     if (!result.success) throw new Error(result.error || 'Failed to create order');
     return result.data;
   }
-  getCache(k) {
-    const c = this.cache.get(k);
-    if (!c) return null;
-    if (Date.now() - c.timestamp > this.cacheTTL) { this.cache.delete(k); return null; }
-    return c.data;
-  }
+  getCache(k) { const c = this.cache.get(k); if (!c) return null; if (Date.now() - c.timestamp > this.cacheTTL) { this.cache.delete(k); return null; } return c.data; }
   setCache(k, d) { this.cache.set(k, { data: d, timestamp: Date.now() }); }
 }
 
@@ -938,11 +712,10 @@ class ShopAPI {
 let api = null;
 let allProducts = [];
 let filteredProducts = [];
-let cart = {}; // { productId: { product, qty } }
+let cart = {};
 let activeCategory = 'all';
 let searchDebounce = null;
-
-// ── Helpers ────────────────────────────────────────────────────────────────
+const productMap = {};
 const fmt = n => Number(n).toLocaleString('vi-VN') + ' ₫';
 
 function showToast(msg, dur = 2000) {
@@ -952,70 +725,73 @@ function showToast(msg, dur = 2000) {
   setTimeout(() => t.classList.remove('show'), dur);
 }
 
-// ── Default config ─────────────────────────────────────────────────────────
-const SHOP_CONFIG = {
-  WORKER_URL: "https://quanlykho-api.nguyenxuancuongk56.workers.dev",
-  PUBLIC_API_KEY: "bb90c3e7-c5bf-4276-9539-3a509667c540"
-};
+// ── Start app with given key ───────────────────────────────────────────────
+async function startApp(apiKey) {
+  api = new ShopAPI({ workerUrl: WORKER_URL, publicApiKey: apiKey });
 
-function getCatName(p) {
-  // Products dùng category_id để match với categories API
-  return String(p.category_id || '').trim();
+  document.getElementById('heroSection').style.display = 'block';
+  document.getElementById('categoryWrap').style.display = 'block';
+  document.getElementById('mobileFab').style.display = 'flex';
+  updateCartUI();
+
+  // Load settings → update shop branding
+  try {
+    const settings = await api.loadSettings();
+    if (settings.shop_name) {
+      const name = settings.shop_name;
+      document.getElementById('shopName').textContent = name;
+      document.title = `Order Online — ${name}`;
+      document.getElementById('headerLogo').innerHTML = `${name} <span>●</span>`;
+      document.getElementById('footerShopName').innerHTML = `${name} <span style="color:var(--accent)">●</span>`;
+      document.getElementById('footerCopyName').textContent = name;
+    }
+    if (settings.shop_address) document.getElementById('footerAddress').textContent = settings.shop_address;
+    if (settings.shop_phone)   document.getElementById('footerPhone').textContent   = settings.shop_phone;
+    if (settings.shop_email)   document.getElementById('footerEmail').textContent   = settings.shop_email;
+  } catch (e) { /* non-critical */ }
+
+  document.getElementById('footerYear').textContent = new Date().getFullYear();
+  initShop();
 }
 
 // ── Init ───────────────────────────────────────────────────────────────────
 async function initShop() {
   document.getElementById('sectionTitle').textContent = 'Đang tải menu...';
   try {
-    // Load categories và products song song
     const [categoriesRaw, products] = await Promise.all([
       api.loadCategories().catch(() => []),
       api.loadProducts({ limit: 200, inStockOnly: true })
     ]);
-
     allProducts = products;
     filteredProducts = [...allProducts];
 
-    // Normalise categories thành [{id, name}]
     let categories = [];
     if (Array.isArray(categoriesRaw) && categoriesRaw.length) {
       categories = categoriesRaw.map(c =>
         typeof c === 'string' ? { id: c, name: c } : { id: String(c.id ?? c.name), name: String(c.name ?? c.id) }
       ).filter(c => c.id);
     }
-    // Fallback: extract từ products nếu API không trả categories
     if (!categories.length) {
       const seen = new Map();
-      allProducts.forEach(p => {
-        const id = getCatName(p);
-        if (id && !seen.has(id)) seen.set(id, id);
-      });
+      allProducts.forEach(p => { const id = getCatName(p); if (id && !seen.has(id)) seen.set(id, id); });
       categories = [...seen.entries()].map(([id, name]) => ({ id, name })).sort((a,b) => a.name.localeCompare(b.name));
     }
-
     buildCategoryTabs(categories);
     renderProducts();
     document.getElementById('sectionTitle').textContent = `Thực đơn (${allProducts.length} món)`;
-
   } catch (err) {
-    console.error(err);
-    document.getElementById('productGrid').innerHTML = `
-      <div class="empty-state" style="grid-column:1/-1">
-        <div class="big-icon">⚠️</div>
-        <h3>Không thể tải menu</h3>
-        <p style="color:var(--muted);font-size:0.85rem;margin-top:0.4rem;">${err.message}</p>
-      </div>`;
+    document.getElementById('productGrid').innerHTML = `<div class="empty-state" style="grid-column:1/-1"><div class="big-icon">⚠️</div><h3>Không thể tải menu</h3><p style="color:var(--muted);font-size:0.85rem;margin-top:0.4rem;">${err.message}</p></div>`;
     document.getElementById('sectionTitle').textContent = 'Lỗi tải dữ liệu';
   }
 }
 
-// ── Category Tabs ──────────────────────────────────────────────────────────
+function getCatName(p) { return String(p.category_id || '').trim(); }
+
 function buildCategoryTabs(categories) {
   const list = document.getElementById('categoryList');
   const tabs = [{ id: 'all', name: '🍽 Tất cả' }, ...categories.map(c =>
     typeof c === 'string' ? { id: c, name: c } : { id: String(c.id || c.name), name: c.name || c.id }
   ).filter(c => c.id)];
-
   list.innerHTML = '';
   tabs.forEach(({ id, name }) => {
     const btn = document.createElement('button');
@@ -1029,52 +805,40 @@ function buildCategoryTabs(categories) {
 
 function selectCategory(cat) {
   activeCategory = cat;
-  document.querySelectorAll('.cat-tab').forEach(b => {
-    b.classList.toggle('active', b.dataset.catId === cat);
-  });
+  document.querySelectorAll('.cat-tab').forEach(b => b.classList.toggle('active', b.dataset.catId === cat));
   applyFilters();
 }
 
-// ── Search ─────────────────────────────────────────────────────────────────
-document.getElementById('searchInput').addEventListener('input', e => {
+document.getElementById('searchInput').addEventListener('input', () => {
   clearTimeout(searchDebounce);
   searchDebounce = setTimeout(() => applyFilters(), 280);
 });
 
-
 function applyFilters() {
   const q = document.getElementById('searchInput').value.trim().toLowerCase();
   filteredProducts = allProducts.filter(p => {
-    const matchCat = activeCategory === 'all' || getCatName(p).toLowerCase() === activeCategory.toLowerCase();
+    const matchCat    = activeCategory === 'all' || getCatName(p).toLowerCase() === activeCategory.toLowerCase();
     const matchSearch = !q || getProductTitle(p).toLowerCase().includes(q) || (p.description || '').toLowerCase().includes(q);
     return matchCat && matchSearch;
   });
   renderProducts();
   document.getElementById('sectionTitle').textContent =
-    q || activeCategory !== 'all'
-      ? `Kết quả (${filteredProducts.length} món)`
-      : `Thực đơn (${allProducts.length} món)`;
+    q || activeCategory !== 'all' ? `Kết quả (${filteredProducts.length} món)` : `Thực đơn (${allProducts.length} món)`;
 }
 
-// ── Product lookup map (avoids inline JSON serialisation bugs) ─────────────
-const productMap = {};
-
-// ── Helpers from common.js ─────────────────────────────────────────────────
 function getImageSource(imageLink) {
   if (!imageLink) return '';
-  if (imageLink.startsWith('data:image') || imageLink.startsWith('base64:')) {
+  if (imageLink.startsWith('data:image') || imageLink.startsWith('base64:'))
     return imageLink.replace('base64:', 'data:image/jpeg;base64,');
-  }
   return imageLink;
 }
-function getProductTitle(product) { return product.title || product.name || 'Sản phẩm không tên'; }
-function getProductPrice(product) {
-  const raw = product.price || 0;
+function getProductTitle(p) { return p.title || p.name || 'Sản phẩm không tên'; }
+function getProductPrice(p) {
+  const raw = p.price || 0;
   if (typeof raw === 'string') return Number(raw.replace(/[^\d.]/g, '') || 0);
   return Number(raw || 0);
 }
 
-// ── Render Products ────────────────────────────────────────────────────────
 const FOOD_EMOJIS = ['🍜','🍛','🥗','🍖','🍗','🍤','🥩','🍲','🥘','🍝','🍱','🥟','🍣','🍔','🌮','🥙','🍕'];
 function foodEmoji(i) { return FOOD_EMOJIS[i % FOOD_EMOJIS.length]; }
 
@@ -1085,24 +849,17 @@ function renderProducts() {
     return;
   }
   grid.innerHTML = filteredProducts.map((p, i) => {
-    const id = String(p.id || i);
+    const id   = String(p.id || i);
     const name = getProductTitle(p);
     const price = getProductPrice(p);
     const desc = p.description || p.desc || '';
-    const cat = (typeof p.category === 'string' ? p.category : (p.category?.name || ''));
+    const cat  = typeof p.category === 'string' ? p.category : (p.category?.name || '');
     const rawImg = p['image link'] || p.image_link || p.image || p.img || p.image_url || p.thumbnail || '';
-    const img = getImageSource(rawImg);
+    const img  = getImageSource(rawImg);
     const inCart = cart[id] ? cart[id].qty : 0;
-
-    // Store in map so addToCart can retrieve without inline JSON
     productMap[id] = { id, name, price, cat, img };
-
-    return `
-    <div class="product-card" id="card-${id}">
-      ${img
-        ? `<img class="product-img" src="${img}" alt="${name}" loading="lazy"
-              onerror="this.style.display='none';document.getElementById('ph-${id}').style.display='flex'">`
-        : ''}
+    return `<div class="product-card" id="card-${id}">
+      ${img ? `<img class="product-img" src="${img}" alt="${name}" loading="lazy" onerror="this.style.display='none';document.getElementById('ph-${id}').style.display='flex'">` : ''}
       <div class="product-img-placeholder" id="ph-${id}" style="${img ? 'display:none' : ''}">${foodEmoji(i)}</div>
       <div class="product-body">
         ${cat ? `<span class="product-cat-tag">${cat}</span>` : ''}
@@ -1116,9 +873,7 @@ function renderProducts() {
               <span class="qty-val" id="qv-${id}">${inCart}</span>
               <button class="qty-btn" onclick="changeQty('${id}',1)">+</button>
             </div>
-            <button class="add-btn" id="addbtn-${id}"
-              onclick="addToCart('${id}')"
-              style="${inCart > 0 ? 'display:none' : ''}">+</button>
+            <button class="add-btn" id="addbtn-${id}" onclick="addToCart('${id}')" style="${inCart > 0 ? 'display:none' : ''}">+</button>
           </div>
         </div>
       </div>
@@ -1126,14 +881,11 @@ function renderProducts() {
   }).join('');
 }
 
-// ── Cart Logic ─────────────────────────────────────────────────────────────
 function addToCart(id) {
-  const p = productMap[id];
-  if (!p) return;
+  const p = productMap[id]; if (!p) return;
   if (!cart[id]) cart[id] = { product: p, qty: 0 };
   cart[id].qty++;
-  updateCardUI(id);
-  updateCartUI();
+  updateCardUI(id); updateCartUI();
   showToast('✓ Đã thêm vào giỏ');
 }
 
@@ -1141,47 +893,37 @@ function changeQty(id, delta) {
   if (!cart[id]) return;
   cart[id].qty += delta;
   if (cart[id].qty <= 0) delete cart[id];
-  updateCardUI(id);
-  updateCartUI();
+  updateCardUI(id); updateCartUI();
 }
 
 function updateCardUI(id) {
   const qty = cart[id] ? cart[id].qty : 0;
-  const addBtn = document.getElementById(`addbtn-${id}`);
+  const addBtn  = document.getElementById(`addbtn-${id}`);
   const stepper = document.getElementById(`stepper-${id}`);
-  const qv = document.getElementById(`qv-${id}`);
-  if (addBtn) addBtn.style.display = qty > 0 ? 'none' : '';
+  const qv      = document.getElementById(`qv-${id}`);
+  if (addBtn)  addBtn.style.display = qty > 0 ? 'none' : '';
   if (stepper) stepper.classList.toggle('show', qty > 0);
-  if (qv) qv.textContent = qty;
+  if (qv)      qv.textContent = qty;
 }
 
 function updateCartUI() {
-  const items = Object.values(cart);
-  const totalQty = items.reduce((s, i) => s + i.qty, 0);
+  const items      = Object.values(cart);
+  const totalQty   = items.reduce((s, i) => s + i.qty, 0);
   const totalPrice = items.reduce((s, i) => s + i.product.price * i.qty, 0);
-
-  // Badge
   const badge = document.getElementById('cartCountBadge');
   badge.textContent = totalQty;
   badge.classList.toggle('show', totalQty > 0);
-
-  // FAB
   document.getElementById('fabTotal').textContent = fmt(totalPrice);
-
-  // Desktop sidebar
-  renderCartItems('Desktop');
-  renderCartItems('Mobile');
-
-  // Order buttons
+  renderCartItems('Desktop'); renderCartItems('Mobile');
   const canOrder = items.length > 0;
   ['Desktop', 'Mobile'].forEach(t => {
-    const btn = document.getElementById(`orderBtn${t}`);
-    if (btn) btn.disabled = !canOrder;
+    const btn   = document.getElementById(`orderBtn${t}`);
     const total = document.getElementById(`cartTotal${t}`);
-    if (total) total.style.display = canOrder ? 'flex' : 'none';
     const price = document.getElementById(`totalPrice${t}`);
-    if (price) price.textContent = fmt(totalPrice);
     const emptyMsg = document.getElementById(`cartEmptyMsg${t === 'Desktop' ? '' : 'Sheet'}`);
+    if (btn)      btn.disabled = !canOrder;
+    if (total)    total.style.display = canOrder ? 'flex' : 'none';
+    if (price)    price.textContent = fmt(totalPrice);
     if (emptyMsg) emptyMsg.style.display = items.length ? 'none' : '';
   });
 }
@@ -1205,22 +947,24 @@ function renderCartItems(suffix) {
     </div>`).join('');
 }
 
-// ── Sheet ──────────────────────────────────────────────────────────────────
-function openSheet() {
-  document.getElementById('sheetOverlay').classList.add('open');
-  document.getElementById('cartSheet').classList.add('open');
-}
-function closeSheet() {
-  document.getElementById('sheetOverlay').classList.remove('open');
-  document.getElementById('cartSheet').classList.remove('open');
-}
+function openSheet()  { document.getElementById('sheetOverlay').classList.add('open'); document.getElementById('cartSheet').classList.add('open'); }
+function closeSheet() { document.getElementById('sheetOverlay').classList.remove('open'); document.getElementById('cartSheet').classList.remove('open'); }
 
-// ── Order ──────────────────────────────────────────────────────────────────
+let _isSubmitting = false;
+
 async function placeOrder(context) {
-  // Đọc từ cả 2 form (desktop + mobile) — lấy giá trị nào có trước
+  if (_isSubmitting) return;
+
+  // Cooldown: chặn đặt lại trong 30s
+  const lastTs = Number(localStorage.getItem(LS_COOLDOWN) || 0);
+  if (Date.now() - lastTs < COOLDOWN_MS) {
+    const remaining = Math.ceil((COOLDOWN_MS - (Date.now() - lastTs)) / 1000);
+    showToast(`⏳ Vui lòng chờ ${remaining}s trước khi đặt tiếp`, 3000);
+    return;
+  }
+
   const getVal = (idD, idM) => {
-    const d = document.getElementById(idD);
-    const m = document.getElementById(idM);
+    const d = document.getElementById(idD); const m = document.getElementById(idM);
     return (d?.value || '').trim() || (m?.value || '').trim();
   };
   const name  = getVal('custNameD',  'custNameM');
@@ -1233,85 +977,65 @@ async function placeOrder(context) {
   if (Object.keys(cart).length === 0) { showToast('⚠️ Giỏ hàng trống'); return; }
   if (!api)   { showToast('⚠️ Chưa kết nối API'); return; }
 
+  _isSubmitting = true;
   const btnId = context === 'desktop' ? 'orderBtnDesktop' : 'orderBtnMobile';
   const btn = document.getElementById(btnId);
   if (btn) { btn.disabled = true; btn.textContent = 'Đang xử lý...'; }
 
   try {
-    // Create customer
     let customerId = `temp_${Date.now()}`;
     try {
       const customer = await api.createCustomer({ name, phone, email });
       customerId = customer.id || customerId;
-    } catch (e) {
-      console.warn('Customer creation failed, using temp id:', e);
-    }
+    } catch (e) { console.warn('Customer creation failed, using temp id:', e); }
 
-    // Build items — API requires "qty" (not "quantity")
     const items = Object.values(cart).map(({ product: p, qty }) => ({
-      product_id: p.id,
-      product_name: p.name,
-      qty: qty,
-      price: p.price,
-      subtotal: p.price * qty
+      product_id: p.id, product_name: p.name, qty, price: p.price, subtotal: p.price * qty
     }));
 
-    // Place order — created_at phải theo format GAS: "yyyy-MM-dd HH:mm:ss"
-    const now = new Date();
-    const pad = n => String(n).padStart(2, '0');
+    const now = new Date(), pad = n => String(n).padStart(2, '0');
     const createdAt = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
 
-    const order = await api.createOrder({
-      customer_id: customerId,
-      customer_name: name,
-      customer_phone: phone,
-      customer_email: email,
-      items,
-      note,
-      created_at: createdAt
-    });
+    const order = await api.createOrder({ customer_id: customerId, customer_name: name, customer_phone: phone, customer_email: email, items, note, created_at: createdAt });
 
-    // Success
+    localStorage.setItem(LS_COOLDOWN, Date.now().toString());
     const orderId = order?.id || order?.order_id || ('ORD-' + Date.now());
     document.getElementById('modalOrderId').textContent = 'Mã đơn: ' + orderId;
     document.getElementById('successModal').classList.add('open');
     closeSheet();
-
   } catch (err) {
     console.error(err);
     showToast('❌ Lỗi: ' + err.message, 3500);
   } finally {
+    _isSubmitting = false;
     if (btn) { btn.disabled = Object.keys(cart).length === 0; btn.textContent = 'Đặt hàng ngay'; }
   }
 }
 
-// ── Close Modal & Reset ────────────────────────────────────────────────────
 function closeModal() {
   document.getElementById('successModal').classList.remove('open');
-  // Reset cart
   cart = {};
-  // Reset all card UIs using productMap keys (always strings)
   Object.keys(productMap).forEach(id => updateCardUI(id));
   updateCartUI();
-  // Clear form fields
   ['D','M'].forEach(s => {
-    ['custName','custPhone','custEmail'].forEach(field => {
-      const el = document.getElementById(field + s);
-      if (el) el.value = '';
-    });
+    ['custName','custPhone','custEmail'].forEach(field => { const el = document.getElementById(field + s); if (el) el.value = ''; });
   });
   document.getElementById('orderNoteDesktop').value = '';
-  document.getElementById('orderNoteMobile').value = '';
+  document.getElementById('orderNoteMobile').value  = '';
   showToast('Bắt đầu đặt món mới!');
 }
 
-// ── Auto-init with default config ─────────────────────────────────────────
-api = new ShopAPI({ workerUrl: SHOP_CONFIG.WORKER_URL, publicApiKey: SHOP_CONFIG.PUBLIC_API_KEY });
-document.getElementById('heroSection').style.display = 'block';
-document.getElementById('categoryWrap').style.display = 'block';
-document.getElementById('mobileFab').style.display = 'flex';
-updateCartUI();
-initShop();
+// ── Bootstrap ──────────────────────────────────────────────────────────────
+document.getElementById('footerYear').textContent = new Date().getFullYear();
+
+const apiKey = resolveApiKey();
+if (apiKey) {
+  startApp(apiKey);
+} else {
+  // Hiện skeleton nhưng ẩn content, show popup
+  document.getElementById('sectionTitle').textContent = 'Vui lòng nhập API Key';
+  showApiKeyPopup();
+}
 </script>
 </body>
 </html>
